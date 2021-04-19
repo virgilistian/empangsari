@@ -9,4 +9,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Menu extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock_qty',
+        'order_restriction',
+    ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ env('APP_NAME', 'Empangsari') }} - @yield('title', 'Beranda')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -24,11 +24,13 @@
 
 <body class="antialiased bg-body text-body font-body">
     <section class="skewed-bottom-right">
-        {{ isset($header) ? $header : '' }}
+        @include('layouts.elements.nav')
+        @yield('hero')
     </section>
 
-    {{ $slot }}
+    @yield('content')
 
+    @include('layouts.elements.footer')
     @stack('modals')
     @stack('script')
 

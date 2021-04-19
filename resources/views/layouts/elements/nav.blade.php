@@ -1,4 +1,4 @@
-    <nav class="relative px-6 py-6 flex justify-between items-center bg-gray-50">
+    <nav class="px-6 py-6 z-20 flex justify-between items-center bg-gray-50 fixed top-0 shadow-lg w-full">
         <a class="text-3xl font-bold leading-none" href="#"><img class="h-12"
                 src="{{ asset('/logo/atis/atis-mono-black.svg') }} " alt="" width="auto"></a>
         <div class="lg:hidden">
@@ -11,7 +11,11 @@
         </div>
         <ul
             class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Beranda</a></li>
+            <li>
+                <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                    {{ __('Beranda') }}
+                </x-nav-link>
+            </li>
             <li class="text-gray-800">
                 <svg class="w-4 h-4 current-fill" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
                     stroke="currentColor">
@@ -20,7 +24,11 @@
                     </path>
                 </svg>
             </li>
-            <li><a class="text-sm text-green-600 font-bold" href="#">Harga</a></li>
+            <li>
+                <x-nav-link href="{{ route('menus.index') }}" :active="request()->routeIs('menus.index')">
+                    {{ __('Menu Kami') }}
+                </x-nav-link>
+            </li>
             <li class="text-gray-800">
                 <svg class="w-4 h-4 current-fill" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
                     stroke="currentColor">
@@ -29,16 +37,7 @@
                     </path>
                 </svg>
             </li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Lokasi & Jam Operasional</a></li>
-            <li class="text-gray-800">
-                <svg class="w-4 h-4 current-fill" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
-                    </path>
-                </svg>
-            </li>
-            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Acara</a></li>
+            <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#testi">Testimoni</a></li>
             <li class="text-gray-800">
                 <svg class="w-4 h-4 current-fill" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
                     stroke="currentColor">
@@ -48,6 +47,20 @@
                 </svg>
             </li>
             <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Reservasi</a></li>
+            <li class="text-gray-800">
+                <svg class="w-4 h-4 current-fill" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+                    </path>
+                </svg>
+            </li>
+            <li>
+              <a class="text-sm text-gray-400 hover:text-gray-500" href="#">
+              Keranjang Belanja
+              <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">100</span>
+              </a>
+            </li>
         </ul>
         @auth
             <a class="hidden lg:inline-block py-2 px-6 bg-green-600 hover:bg-green-700 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-200"

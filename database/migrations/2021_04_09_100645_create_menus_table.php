@@ -21,6 +21,7 @@ class CreateMenusTable extends Migration
             $table->integer('stock_qty')->default(0);
             $table->tinyInteger('order_restriction')->default(0);
             $table->tinyInteger('is_active')->default(1);
+            $table->string('slug');
             $table->timestamps();
             $table->softDeletes();
         });

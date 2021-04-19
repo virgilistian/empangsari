@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenusController;
 use App\Http\Livewire\Orders;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('orders', Orders::class)->name('orders');
+Route::resources([
+    'menus' => MenusController::class
+]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -1,12 +1,17 @@
-<x-guest-layout>
-    <x-slot name="header">
-        @include('layouts.elements.nav')
-        @include('layouts.elements.hero')
-    </x-slot>
+@extends('layouts.guest')
+
+@section('title', 'Beranda')
+
+@section('hero')
+    @include('layouts.elements.hero')
+@endsection
+
+@section('content')
 
     @livewire('home.content-section')
     @livewire('home.gallery-section')
-    @livewire('home.testimoni-section')
+    <div id="testi">
+        @livewire('home.testimoni-section')
+    </div>
 
-    @include('layouts.elements.footer')
-</x-app-layout>
+@endsection

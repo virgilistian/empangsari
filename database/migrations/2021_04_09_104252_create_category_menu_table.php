@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenuCategoriesTable extends Migration
+class CreateCategoryMenuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateMenuCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_categories', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('menu_id', false, true);
-            $table->foreignId('menu_id')->constrained();
-            $table->bigInteger('category_id', false, true);
+        Schema::create('category_menu', function (Blueprint $table) {
             $table->foreignId('category_id')->constrained();
-            $table->timestamps();
+            $table->foreignId('menu_id')->constrained();
         });
     }
 
@@ -30,6 +26,6 @@ class CreateMenuCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_categories');
+        Schema::dropIfExists('category_menu');
     }
 }
